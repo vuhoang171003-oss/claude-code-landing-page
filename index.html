@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude Code - Xây dựng ứng dụng hoàn chỉnh</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+        }
+        h1 {
+            font-weight: 800;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-[#090A14] text-white">
+    <!-- NAVIGATION -->
+    <nav class="fixed top-0 w-full bg-[#090A14] z-50 border-b border-gray-800">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="text-[#DF6B33] font-bold text-xl">Claude Code</div>
+            <button class="bg-[#DF6B33] hover:bg-[#c55a2a] hover:scale-95 transition-all text-white px-4 py-2 rounded font-semibold">
+                Đăng Ký Ngay
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="pt-24 pb-16 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">
+                        Xây dựng ứng dụng với <span class="bg-gradient-to-r from-[#DF6B33] to-[#ff8c42] bg-clip-text text-transparent">Claude Code</span>
+                    </h1>
+                    <p class="text-gray-300 text-lg mb-8">
+                        Khóa học 8 buổi (16 tiết) trang bị kỹ năng thực chiến — từ cài đặt đến triển khai sản phẩm hoàn chỉnh
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 mb-8">
+                        <button class="bg-[#DF6B33] hover:bg-[#c55a2a] hover:scale-95 transition-all text-white px-6 py-3 rounded font-semibold">
+                            Đăng Ký Khóa Học
+                        </button>
+                        <button class="border border-gray-600 hover:border-[#DF6B33] hover:scale-95 transition-all text-white px-6 py-3 rounded font-semibold">
+                            Xem Demo
+                        </button>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-4 text-center">
+                        <div class="bg-gray-800 px-4 py-2 rounded">
+                            <div class="text-[#DF6B33] font-bold">16</div>
+                            <div class="text-sm text-gray-300">tiết học</div>
+                        </div>
+                        <div class="bg-gray-800 px-4 py-2 rounded">
+                            <div class="text-[#DF6B33] font-bold">8</div>
+                            <div class="text-sm text-gray-300">buổi thực chiến</div>
+                        </div>
+                        <div class="bg-gray-800 px-4 py-2 rounded">
+                            <div class="text-[#DF6B33] font-bold">Deploy</div>
+                            <div class="text-sm text-gray-300">thực tế</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-800 h-64 md:h-80 rounded-lg flex items-center justify-center">
+                    <span class="text-gray-400">Image Placeholder</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEM STATEMENT -->
+    <section id="problem" class="py-16 px-4 bg-gray-900">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Bạn đang gặp những vấn đề nào?</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="flex items-start gap-4">
+                    <i data-lucide="clock" class="text-[#DF6B33] mt-1"></i>
+                    <div>
+                        <h3 class="font-semibold mb-2">Viết code mất quá nhiều thời gian</h3>
+                        <p class="text-gray-300">Mất hàng giờ để viết từng dòng code, debug lỗi cơ bản</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <i data-lucide="brain" class="text-[#DF6B33] mt-1"></i>
+                    <div>
+                        <h3 class="font-semibold mb-2">Khó ghi nhớ syntax và APIs phức tạp</h3>
+                        <p class="text-gray-300">Luôn phải tra cứu documentation, không hiệu quả</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <i data-lucide="alert-triangle" class="text-[#DF6B33] mt-1"></i>
+                    <div>
+                        <h3 class="font-semibold mb-2">Sợ làm hỏng code khi refactoring</h3>
+                        <p class="text-gray-300">Thay đổi nhỏ có thể phá vỡ toàn bộ ứng dụng</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <i data-lucide="zap" class="text-[#DF6B33] mt-1"></i>
+                    <div>
+                        <h3 class="font-semibold mb-2">Muốn tự động hóa nhưng không biết bắt đầu từ đâu</h3>
+                        <p class="text-gray-300">AI có thể giúp nhưng không biết cách sử dụng hiệu quả</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUTION SECTION -->
+    <section id="solution" class="py-16 px-4">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">Giải Pháp Toàn Diện Cho Bạn</h2>
+            <p class="text-gray-300 text-center text-lg mb-12">
+                Khóa học 8 buổi tập trung thực chiến, học cách sử dụng Claude Code để xây dựng ứng dụng hoàn chỉnh từ Firebase Backend đến Frontend, deploy lên Vercel
+            </p>
+            <div class="grid md:grid-cols-1 gap-6">
+                <div class="flex items-start gap-4">
+                    <span class="text-2xl">🎯</span>
+                    <div>
+                        <h3 class="font-semibold mb-2">Hướng dẫn từng bước chi tiết</h3>
+                        <p class="text-gray-300">8 buổi thực chiến với bài tập thực tế</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <span class="text-2xl">🛠️</span>
+                    <div>
+                        <h3 class="font-semibold mb-2">16 tiết học thực hành</h3>
+                        <p class="text-gray-300">Tập trung vào việc làm, không lý thuyết suông</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <span class="text-2xl">💡</span>
+                    <div>
+                        <h3 class="font-semibold mb-2">Học từ dự án thực tế</h3>
+                        <p class="text-gray-300">ProjectOS - Enterprise Project Management</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <span class="text-2xl">🎥</span>
+                    <div>
+                        <h3 class="font-semibold mb-2">Video ghi lại toàn bộ buổi học</h3>
+                        <p class="text-gray-300">Xem lại bất cứ lúc nào</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <span class="text-2xl">🤝</span>
+                    <div>
+                        <h3 class="font-semibold mb-2">Cộng đồng học viên & Group Zalo</h3>
+                        <p class="text-gray-300">Hỗ trợ sau khóa học</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TARGET AUDIENCE -->
+    <section id="audience" class="py-16 px-4 bg-gray-900">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Khóa Học Dành Cho Ai?</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-gray-800 p-6 rounded-lg hover:border hover:border-[#DF6B33] transition-all">
+                    <h3 class="font-semibold mb-2">Sinh viên năm 3-4 & mới ra trường</h3>
+                    <p class="text-gray-300">Lương khởi điểm 10-15 triệu/tháng</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg hover:border hover:border-[#DF6B33] transition-all">
+                    <h3 class="font-semibold mb-2">Người đi làm muốn nâng cấp kỹ năng</h3>
+                    <p class="text-gray-300">Fresher, IT Support, Tester</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg hover:border hover:border-[#DF6B33] transition-all">
+                    <h3 class="font-semibold mb-2">Người không chuyên kỹ thuật</h3>
+                    <p class="text-gray-300">PM, Designer, Entrepreneur muốn tự xây sản phẩm</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg hover:border hover:border-[#DF6B33] transition-all">
+                    <h3 class="font-semibold mb-2">Developer đã có nền tảng</h3>
+                    <p class="text-gray-300">Muốn làm AI-native development</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COURSE CONTENT -->
+    <section id="content" class="py-16 px-4">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">Chương Trình 8 Buổi</h2>
+            <p class="text-gray-300 text-center mb-12">16 tiết học thực chiến, hoàn thành project có thể deploy</p>
+            <div class="space-y-4">
+                <details class="bg-gray-800 p-4 rounded-lg">
+                    <summary class="cursor-pointer font-semibold">Buổi 1: Làm quen Claude Code — Cài đặt, cấu hình & luồng làm việc cơ bản (0.5 tiết)</summary>
+                    <p class="text-gray-300 mt-2">Cài đặt và cấu hình Claude Code, hiểu luồng làm việc cơ bản</p>
+                </details>
+                <details class="bg-gray-800 p-4 rounded-lg">
+                    <summary class="cursor-pointer font-semibold">Buổi 2: Prompt Engineering thực chiến (0.5 tiết)</summary>
+                    <p class="text-gray-300 mt-2">Học cách viết prompt hiệu quả để AI hiểu và thực hiện đúng yêu cầu</p>
+                </details>
+                <details class="bg-gray-800 p-4 rounded-lg">
+                    <summary class="cursor-pointer font-semibold">Buổi 3: Thiết kế kiến trúc ứng dụng cùng AI (4 tiết)</summary>
+                    <p class="text-gray-300 mt-2">Thiết kế kiến trúc ứng dụng, database schema, API endpoints</p>
+                </details>
+                <details class="bg-gray-800 p-4 rounded-lg">
+                    <summary class="cursor-pointer font-semibold">Buổi 4: Xây dựng Backend với Firebase (4 tiết)</summary>
+                    <p class="text-gray-300 mt-2">Xây dựng backend hoàn chỉnh với Firebase Functions, Firestore</p>
+                </details>
+                <details class="bg-gray-800 p-4 rounded-lg">
+                    <summary class="cursor-pointer font-semibold">Buổi 5: Xây dựng Frontend — UI, kết nối Firebase, xử lý nghiệp vụ (4 tiết)</summary>
+                    <p class="text-gray-300 mt-2">Xây dựng giao diện người dùng, kết nối với backend</p>
+                </details>
+                <details class="bg-gray-800 p-4 rounded-lg">
+                    <summary class="cursor-pointer font-semibold">Buổi 6: Debug & Refactor cùng AI (1 tiết)</summary>
+                    <p class="text-gray-300 mt-2">Debug lỗi và refactor code một cách an toàn</p>
+                </details>
+                <details class="bg-gray-800 p-4 rounded-lg">
+                    <summary class="cursor-pointer font-semibold">Buổi 7: Tích hợp tính năng nâng cao (1 tiết)</summary>
+                    <p class="text-gray-300 mt-2">Thêm tính năng nâng cao như authentication, notifications</p>
+                </details>
+                <details class="bg-gray-800 p-4 rounded-lg">
+                    <summary class="cursor-pointer font-semibold">Buổi 8: Deploy & Hoàn thiện sản phẩm trên Vercel (1 tiết)</summary>
+                    <p class="text-gray-300 mt-2">Deploy ứng dụng lên Vercel và hoàn thiện sản phẩm</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL PROOF -->
+    <section id="proof" class="py-16 px-4 bg-gray-900">
+        <div class="container mx-auto max-w-4xl text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8">Sản Phẩm Học Viên</h2>
+            <div class="bg-gray-800 p-8 rounded-lg mb-8">
+                <h3 class="text-xl font-semibold mb-4">ProjectOS — Enterprise Project Management</h3>
+                <p class="text-gray-300 mb-4">Demo: <a href="https://project-management.vercel.app" class="text-[#DF6B33]">project-management.vercel.app</a></p>
+            </div>
+            <blockquote class="text-lg italic mb-8">
+                "Lập trình viên tương lai không phải người viết code nhanh nhất. Họ là người biết hướng dẫn AI tốt nhất."
+            </blockquote>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <div class="bg-gray-800 px-6 py-4 rounded">
+                    <div class="text-[#DF6B33] font-bold text-2xl">100%</div>
+                    <div class="text-sm text-gray-300">Học viên hoàn thành project</div>
+                </div>
+                <div class="bg-gray-800 px-6 py-4 rounded">
+                    <div class="text-[#DF6B33] font-bold text-2xl">Deploy</div>
+                    <div class="text-sm text-gray-300">thực tế lên Vercel</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section id="cta" class="py-16 px-4">
+        <div class="container mx-auto max-w-4xl text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8">Sẵn Sàng Bắt Đầu Chưa?</h2>
+            <form class="bg-gray-800 p-8 rounded-lg mb-8">
+                <div class="grid md:grid-cols-2 gap-4 mb-4">
+                    <input type="text" placeholder="Họ và tên" class="bg-gray-700 p-3 rounded border border-gray-600 focus:border-[#DF6B33]">
+                    <input type="email" placeholder="Email" class="bg-gray-700 p-3 rounded border border-gray-600 focus:border-[#DF6B33]">
+                </div>
+                <button type="submit" class="bg-[#DF6B33] hover:bg-[#c55a2a] hover:scale-95 transition-all text-white px-6 py-3 rounded font-semibold w-full md:w-auto">
+                    Đăng Ký Ngay
+                </button>
+            </form>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                <button class="border border-[#DF6B33] text-[#DF6B33] hover:bg-[#DF6B33] hover:text-white hover:scale-95 transition-all px-6 py-3 rounded font-semibold">
+                    Liên Hệ Hỗ Trợ
+                </button>
+            </div>
+            <p class="text-gray-300">Hotline: <span class="text-[#DF6B33]">0236.3.779.779</span></p>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="py-16 px-4 bg-gray-900">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Câu Hỏi Thường Gặp</h2>
+            <div class="space-y-4">
+                <details class="bg-gray-800 p-4 rounded-lg">
+                    <summary class="cursor-pointer font-semibold">Tôi là người mới bắt đầu, có học được không?</summary>
+                    <p class="text-gray-300 mt-2">Có, khóa học được thiết kế cho cả người mới bắt đầu. Chúng tôi sẽ hướng dẫn từ cơ bản đến nâng cao.</p>
+                </details>
+                <details class="bg-gray-800 p-4 rounded-lg">
+                    <summary class="cursor-pointer font-semibold">Khóa này dành cho những ai?</summary>
+                    <p class="text-gray-300 mt-2">Dành cho sinh viên, người đi làm muốn nâng cấp kỹ năng, và developer muốn làm AI-native.</p>
+                </details>
+                <details class="bg-gray-800 p-4 rounded-lg">
+                    <summary class="cursor-pointer font-semibold">Tôi bao giờ hoàn thành?</summary>
+                    <p class="text-gray-300 mt-2">Khóa học kéo dài 8 buổi, bạn có thể học theo lịch trình của mình.</p>
+                </details>
+                <details class="bg-gray-800 p-4 rounded-lg">
+                    <summary class="cursor-pointer font-semibold">Có hỗ trợ sau khi mua không?</summary>
+                    <p class="text-gray-300 mt-2">Có, chúng tôi có cộng đồng và group Zalo hỗ trợ sau khóa học.</p>
+                </details>
+                <details class="bg-gray-800 p-4 rounded-lg">
+                    <summary class="cursor-pointer font-semibold">Nếu tôi không hài lòng thì sao?</summary>
+                    <p class="text-gray-300 mt-2">Chúng tôi có chính sách hoàn tiền nếu bạn không hài lòng.</p>
+                </details>
+                <details class="bg-gray-800 p-4 rounded-lg">
+                    <summary class="cursor-pointer font-semibold">Tôi có truy cập vĩnh viễn không?</summary>
+                    <p class="text-gray-300 mt-2">Có, bạn có quyền truy cập vĩnh viễn vào tài liệu và video.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-16 px-4 bg-gray-800">
+        <div class="container mx-auto max-w-4xl">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <div class="text-[#DF6B33] font-bold text-xl mb-4">Softech Aptech</div>
+                    <p class="text-gray-300">24 Lê Thánh Tôn, Đà Nẵng</p>
+                    <p class="text-gray-300">Hotline: 0236.3.779.779</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-4">Kết nối với chúng tôi</h3>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-gray-300 hover:text-[#DF6B33]">Facebook</a>
+                        <a href="#" class="text-gray-300 hover:text-[#DF6B33]">Zalo</a>
+                        <a href="#" class="text-gray-300 hover:text-[#DF6B33]">LinkedIn</a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-4">Newsletter</h3>
+                    <p class="text-gray-300 mb-4">Nhận tips Claude Code miễn phí</p>
+                    <input type="email" placeholder="Email của bạn" class="bg-gray-700 p-2 rounded border border-gray-600 w-full mb-2">
+                    <button class="bg-[#DF6B33] hover:bg-[#c55a2a] text-white px-4 py-2 rounded w-full">Đăng ký</button>
+                </div>
+            </div>
+            <div class="text-center text-gray-400">
+                <p>&copy; 2026 Softech Aptech. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
